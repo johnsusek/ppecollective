@@ -1,3 +1,5 @@
+let path = require('path')
+let fs = require('fs')
 
 module.exports = {
   mode: 'universal',
@@ -66,12 +68,12 @@ module.exports = {
   auth: {
     strategies: {
       facebook: {
-        client_id: '...',
+        client_id: '229446208434633',
         userinfo_endpoint: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email',
         scope: ['public_profile', 'email']
       },
       google: {
-        client_id: '...'
+        client_id: '23961352121-j9q7d8o6fs5ejehl7d76co5u4dam1jr0.apps.googleusercontent.com'
       }
     }
   }

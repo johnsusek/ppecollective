@@ -4,15 +4,38 @@
       <h1 class="title">
         Chicago PPE Collective
       </h1>
+
       <h2 class="subtitle">
         Connecting makers with medicial facilities.
       </h2>
+
+      <div v-if="!loggedIn">
+        <el-button @click="loginFacebook">Login with Facebook</el-button>
+        <el-button @click="loginGoogle">Login with Google</el-button>
+      </div>
+
+      <div v-else>
+        Logged in as {{ user.name }} ({{ user.email }})
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+  computed: {
+     ...mapState('auth', ['loggedIn', 'user'])
+  },
+  methods: {
+    async loginGoogle() {
+      this.$auth.loginWith('google')
+    },
+    async loginFacebook() {
+      this.$auth.loginWith('facebook')
+    }
+  }
 }
 </script>
 
